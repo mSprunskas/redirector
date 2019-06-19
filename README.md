@@ -9,3 +9,6 @@ Run `npm i && npm run start` from project container
 ## Running the tests
 
 No tests at the moment :)
+
+## Demo
+[https://msprunskas.github.io/redirector/](https://msprunskas.github.io/redirector/)
