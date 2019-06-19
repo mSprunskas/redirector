@@ -1,6 +1,6 @@
 # Redirector
 
-Micro app redirection by user id. All data is saved in local storage.
+Micro app for user redirection to specific url. All data is saved in local storage.
 
 ## Getting Started
 
