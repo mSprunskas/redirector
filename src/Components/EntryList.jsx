@@ -11,7 +11,7 @@ const EntryList = ({ entries, onDelete }) => (
                     <a href={`${item.getAuthUrl()}/${item.getUserId()}`} target="_blank" className="btn btn-link">
                         {item.getUserName()} ({item.getUserId()})
                     </a>
-                    <button type="button" className="btn btn-danger btn-sm pull-right" onClick={() => onDelete(item.getUuid())}>
+                    <button type="button" className="btn btn-danger float-right" onClick={() => onDelete(item.getUuid())}>
                         Delete
                     </button>
                 </li>

@@ -82,11 +82,13 @@ class Form extends PureComponent {
                         className="form-control"
                         name="authUrl"
                         value={authUrl}
-                        placeholder={`default: ${defaultUrl}`}
                         onChange={this.handleChange}
                     />
+                    <small className="form-text text-muted">
+                        {`default: ${defaultUrl}`}
+                    </small>
                 </div>
-                <div className="clearfix">
+                <div>
                     <button
                         type="submit"
                         className="btn btn-primary pull-left"

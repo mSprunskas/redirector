@@ -79,7 +79,7 @@ class Page extends PureComponent {
                     </div>
                 </aside>
                 <main className="main">
-                    <div className="doc-container">
+                    <div className="content-container">
                         <EntryList
                             entries={entryList}
                             onDelete={this.onDelete}
