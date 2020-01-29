@@ -8,12 +8,26 @@ const EntryList = ({ entries, onDelete }) => (
         <ul className="list-group">
             {entries.map(item => (
                 <li className="list-group-item clearfix" key={item.getUuid()}>
-                    <a href={`${item.getAuthUrl()}/${item.getUserId()}`} target="_blank" className="btn btn-link">
+                    <a href={`${item.getAuthUrl()}/${item.getUserId()}`} target="_blank">
                         {item.getUserName()} ({item.getUserId()})
                     </a>
-                    <button type="button" className="btn btn-danger float-right" onClick={() => onDelete(item.getUuid())}>
-                        Delete
-                    </button>
+                    <span className="float-right">
+                        <button
+                            type="button"
+                            className="btn btn-outline-secondary btn-sm"
+                            onClick={() => { navigator.clipboard.writeText(item.getUserId()) }}
+                        >
+                            Copy User Id
+                        </button>
+                        {' '}
+                        <button
+                            type="button"
+                            className="btn btn-danger btn-sm"
+                            onClick={() => onDelete(item.getUuid())}
+                        >
+                            Delete
+                        </button>
+                    </span>
                 </li>
             ))}
         </ul>
