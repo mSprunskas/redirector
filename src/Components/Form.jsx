@@ -38,7 +38,6 @@ class Form extends PureComponent {
         const url = authUrl === '' ? defaultUrl : authUrl;
 
         const entry = new Entry();
-        // TODO: check for id collisions
         entry.setUuid(uuidv4());
         entry.setUserId(userId);
         entry.setUserName(userName);
@@ -49,7 +48,7 @@ class Form extends PureComponent {
 
     render() {
         const { userId, userName, authUrl } = this.state;
-        const { defaultUrl } = this.props;
+        const { defaultUrl, onExport } = this.props;
 
         return (
             <form onSubmit={this.submit}>
@@ -88,12 +87,19 @@ class Form extends PureComponent {
                         {`default: ${defaultUrl}`}
                     </small>
                 </div>
-                <div>
+                <div className="clearfix">
                     <button
                         type="submit"
-                        className="btn btn-primary pull-left"
+                        className="btn btn-primary float-left"
                     >
                         Add
+                    </button>
+                    <button
+                        type="button"
+                        className="btn btn-outline-secondary float-right"
+                        onClick={onExport}
+                    >
+                        Export
                     </button>
                 </div>
             </form>
@@ -103,7 +109,7 @@ class Form extends PureComponent {
 
 Form.propTypes = {
     defaultUrl: PropTypes.string.isRequired,
-    onUpdate: PropTypes.func.isRequired,
+    onExport: PropTypes.func.isRequired,
 };
 
 export default Form;

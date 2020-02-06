@@ -16,6 +16,7 @@ class Page extends PureComponent {
 
         this.onUpdated = this.onUpdated.bind(this);
         this.onDelete = this.onDelete.bind(this);
+        this.export = this.export.bind(this);
     }
 
     componentDidMount() {
@@ -24,6 +25,19 @@ class Page extends PureComponent {
         this.setState({
             entryList,
         });
+    }
+
+    export() {
+        const { entryList } = this.state;
+
+        const element = document.createElement('a');
+        const file = new Blob([JSON.stringify(entryList)], { type: 'text/plain' });
+        element.id = 'downloader';
+        element.href = URL.createObjectURL(file);
+        element.download = 'redirector.json';
+        document.body.appendChild(element);
+        element.click();
+        element.parentNode.removeChild(element);
     }
 
     /**
@@ -49,8 +63,6 @@ class Page extends PureComponent {
     }
 
     update(list) {
-        let { authUrl } = this.state;
-
         const updatedList = [...list];
 
         this.setState(
@@ -74,6 +86,7 @@ class Page extends PureComponent {
                             <Form
                                 defaultUrl={getDefaultUrl(entryList)}
                                 onUpdate={this.onUpdated}
+                                onExport={this.export}
                             />
                         </div>
                     </div>
